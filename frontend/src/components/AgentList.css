@@ -1,0 +1,71 @@
+/* AgentList.css */
+
+.agent-list-container {
+  min-height: 80vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.agent-list-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.table-wrapper {
+  width: 100%;
+  max-width: 900px;
+  overflow-x: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+  padding: 1rem;
+  backdrop-filter: blur(8px);
+}
+
+.agent-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #f0f0f0;
+}
+
+.agent-table thead {
+  background: rgba(102, 126, 234, 0.7);
+  font-weight: 700;
+}
+
+.agent-table th,
+.agent-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.agent-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+.task-link {
+  background: #764ba2;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(118, 75, 162, 0.6);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.task-link:hover {
+  background: #5a3d8a;
+  transform: scale(1.05);
+}

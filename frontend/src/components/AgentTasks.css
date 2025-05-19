@@ -1,0 +1,80 @@
+/* AgentTasks.css */
+
+.container {
+  padding: 1rem 1.5rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #334155;
+  position: relative;
+}
+
+.back-button {
+  background-color: #3b82f6; /* Tailwind blue-500 */
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background-color: #2563eb; /* Tailwind blue-600 */
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+  font-weight: 700;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.mobile {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.mobile a {
+  color: #3b82f6; /* Tailwind blue-500 */
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.mobile a:hover {
+  color: #2563eb; /* Tailwind blue-600 */
+}
+
+.task-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.task-item {
+  margin-bottom: 0.8rem;
+  font-size: 1.15rem;
+  background-color: #e0f2fe; /* Light blue background */
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3); /* subtle blue shadow */
+  transition: transform 0.2s ease;
+}
+
+.task-item:hover {
+  transform: scale(1.03);
+  background-color: #bae6fd; /* Slightly brighter blue on hover */
+}
+
+.empty {
+  font-style: italic;
+  color: #64748b; /* Tailwind gray-500 */
+  text-align: center;
+}
