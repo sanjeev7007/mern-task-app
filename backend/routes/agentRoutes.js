@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const agentController = require('../controllers/agentController');
-const authMiddleware = require('../middleware/authMiddleware'); // this file must exist
+const { loginUser, registerUser } = require('../controllers/authController');
 
-router.get('/', authMiddleware, agentController.getAgents);
+// POST /api/auth/login
+router.post('/login', loginUser);
+
+// POST /api/auth/register
+router.post('/register', registerUser);
 
 module.exports = router;

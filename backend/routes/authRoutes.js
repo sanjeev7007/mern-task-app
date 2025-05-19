@@ -1,24 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+const { loginAdmin, registerAdmin } = require('../controllers/authController');
 
-// Sign up route to create admin
-router.post('/signup', async (req, res) => {
-  const { email, password, role } = req.body;
-  try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(400).json({ message: 'User already exists.' });
+// Route to login admin (POST /api/auth/login)
+router.post('/login', loginAdmin);
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ email, password: hashedPassword, role });
-    await user.save();
-
-    res.status(201).json({ message: 'Admin created successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+// (Optional) Route to register admin (POST /api/auth/register)
+router.post('/register', registerAdmin);
 
 module.exports = router;

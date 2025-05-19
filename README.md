@@ -38,7 +38,19 @@ Welcome to the **MERN Task App**, a modern web application for managing agents a
 
 ## 📸 Preview
 
+---
+
+**Login page**
+![Project Screenshot](/project%20image/Login%20page.png)
+
+**DashBoard**
 ![Project Screenshot](/project%20image/project%20image%20.png)
+
+**Upload CSV**
+![Project Screenshot](/project%20image/upload%20csv.png)
+
+**Agent List**
+![Project Screenshot](/project%20image/agent%20list.png)
 
 ---
 
