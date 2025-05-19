@@ -94,7 +94,7 @@ The frontend will run on [http://localhost:3000](http://localhost:3000) and back
 
 ## 📄 Usage
 
-- **Login** as admin or [Sign Up](http://localhost:3000/signup) for a new admin account.
+- **Login** as admin or **Sign Up** for a new admin account.
 - **Manage Agents**: Add, edit, or remove agents from the dashboard.
 - **Distribute Tasks**: Assign tasks to agents and track their status.
 - **Bulk Upload**: Use the CSV uploader to import agents/tasks in bulk.
