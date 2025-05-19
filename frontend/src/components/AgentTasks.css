@@ -1,80 +1,115 @@
 /* AgentTasks.css */
+:root {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --text-primary: #f9fafb;
+  --bg-main: #070b14;
+  --bg-card: rgba(17, 24, 39, 0.8);
+  --border-color: rgba(99, 102, 241, 0.3);
+  --radius-lg: 0.5rem;
+  --transition-normal: 0.3s ease;
+}
 
-.container {
-  padding: 1rem 1.5rem;
-  max-width: 600px;
-  margin: 2rem auto;
-  background: #f9fafb;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #334155;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  line-height: 1.5;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   position: relative;
 }
 
+.dashboard-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.navbar {
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+  height: 70px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .back-button {
-  background-color: #3b82f6; /* Tailwind blue-500 */
-  border: none;
+  background: var(--primary-color);
   color: white;
+  border: none;
+  border-radius: var(--radius-lg);
   padding: 0.5rem 1rem;
-  border-radius: 5px;
   cursor: pointer;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  transition: background-color 0.3s ease;
-  display: inline-block;
+  transition: background var(--transition-normal);
 }
 
 .back-button:hover {
-  background-color: #2563eb; /* Tailwind blue-600 */
-}
-
-h2 {
-  margin-bottom: 0.5rem;
-  color: #1e293b;
-  font-weight: 700;
-  font-size: 1.75rem;
-  text-align: center;
+  background: var(--primary-hover);
 }
 
 .mobile {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.mobile a {
-  color: #3b82f6; /* Tailwind blue-500 */
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-
-.mobile a:hover {
-  color: #2563eb; /* Tailwind blue-600 */
+  font-size: 1rem;
 }
 
 .task-list {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+  list-style: none;
+  padding: 0;
 }
 
 .task-item {
-  margin-bottom: 0.8rem;
-  font-size: 1.15rem;
-  background-color: #e0f2fe; /* Light blue background */
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3); /* subtle blue shadow */
-  transition: transform 0.2s ease;
-}
-
-.task-item:hover {
-  transform: scale(1.03);
-  background-color: #bae6fd; /* Slightly brighter blue on hover */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  margin: 0.5rem 0;
 }
 
 .empty {
-  font-style: italic;
-  color: #64748b; /* Tailwind gray-500 */
+  color: var(--text-primary);
   text-align: center;
+}
+
+.dashboard-footer {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-primary);
+  border-top: 1px solid rgba(99, 102, 241, 0.3);
 }

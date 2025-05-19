@@ -5,7 +5,6 @@ import './AgentList.css';
 
 function AgentList() {
   const [agents, setAgents] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchAgents = async () => {
@@ -24,13 +23,6 @@ function AgentList() {
 
     fetchAgents();
   }, []);
-
-  const filteredAgents = agents.filter(
-    (agent) =>
-      agent.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      agent.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      agent.mobile.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div className="dashboard-container">
@@ -53,7 +45,9 @@ function AgentList() {
         </div>
 
         <div className="user-menu">
-          <div className="user-avatar"><span>U</span></div>
+          <div className="user-avatar">
+            <span>U</span>
+          </div>
           <div className="user-info">
             <span className="user-name">User</span>
             <span className="user-role">Admin</span>
@@ -63,15 +57,6 @@ function AgentList() {
 
       <div className="dashboard-main">
         <h1 className="dashboard-title">Agent List</h1>
-
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search agents by name, email, or mobile..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-
         <div className="table-wrapper">
           <table className="agent-table">
             <thead>
@@ -83,24 +68,18 @@ function AgentList() {
               </tr>
             </thead>
             <tbody>
-              {filteredAgents.length > 0 ? (
-                filteredAgents.map((agent) => (
-                  <tr key={agent._id}>
-                    <td>{agent.name}</td>
-                    <td>{agent.email}</td>
-                    <td>{agent.mobile}</td>
-                    <td>
-                      <Link to={`/agent-tasks/${agent._id}`} className="task-link">
-                        View Tasks
-                      </Link>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="4">No agents found.</td>
+              {agents.map((agent) => (
+                <tr key={agent._id}>
+                  <td>{agent.name}</td>
+                  <td>{agent.email}</td>
+                  <td>{agent.mobile}</td>
+                  <td>
+                    <Link to={`/agent-tasks/${agent._id}`} className="task-link">
+                      View Tasks
+                    </Link>
+                  </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
         </div>

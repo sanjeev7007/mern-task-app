@@ -1,71 +1,117 @@
-/* AgentList.css */
-
-.agent-list-container {
-  min-height: 80vh;
-  padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+:root {
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --text-primary: #f9fafb;
+  --bg-main: #070b14;
+  --bg-card: rgba(17, 24, 39, 0.8);
+  --border-color: rgba(99, 102, 241, 0.3);
+  --radius-lg: 0.5rem;
+  --transition-normal: 0.3s ease;
 }
 
-.agent-list-title {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  line-height: 1.5;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.dashboard-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.navbar {
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+  height: 70px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  color: var(--text-primary);
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
 }
 
 .table-wrapper {
-  width: 100%;
-  max-width: 900px;
   overflow-x: auto;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
-  padding: 1rem;
-  backdrop-filter: blur(8px);
 }
 
 .agent-table {
   width: 100%;
   border-collapse: collapse;
-  color: #f0f0f0;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.agent-table thead {
-  background: rgba(102, 126, 234, 0.7);
-  font-weight: 700;
-}
-
-.agent-table th,
-.agent-table td {
-  padding: 12px 15px;
+.agent-table th, .agent-table td {
+  padding: 1rem;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  transition: background-color 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.agent-table tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  cursor: pointer;
+.agent-table th {
+  background: var(--primary-color);
+  color: white;
+}
+
+.agent-table tr:hover {
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .task-link {
-  background: #764ba2;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 15px rgba(118, 75, 162, 0.6);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
-.task-link:hover {
-  background: #5a3d8a;
-  transform: scale(1.05);
+.dashboard-footer {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-primary);
+  border-top: 1px solid rgba(99, 102, 241, 0.3);
 }

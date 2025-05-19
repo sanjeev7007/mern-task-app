@@ -1,24 +1,21 @@
-// controllers/agentController.js
+const Agent = require('../models/Agent');
+const csv = require('csv-parser');
+const fs = require('fs');
+const DistributedList = require('../models/DistributedList');
 
-const Agent = require('../models/Agent'); // Your Agent model
-
-// Create a new agent
 exports.createAgent = async (req, res) => {
   try {
     const { name, email, mobile } = req.body;
 
-    // Basic validation (you can add more)
     if (!name || !email || !mobile) {
       return res.status(400).json({ message: 'Please provide name, email, and mobile.' });
     }
 
-    // Check if agent with email already exists
     const existingAgent = await Agent.findOne({ email });
     if (existingAgent) {
       return res.status(400).json({ message: 'Agent with this email already exists.' });
     }
 
-    // Create new agent
     const newAgent = new Agent({ name, email, mobile });
     await newAgent.save();
 
@@ -29,7 +26,6 @@ exports.createAgent = async (req, res) => {
   }
 };
 
-// Get all agents
 exports.getAgents = async (req, res) => {
   try {
     const agents = await Agent.find();
@@ -40,7 +36,6 @@ exports.getAgents = async (req, res) => {
   }
 };
 
-// Get agent by ID
 exports.getAgentById = async (req, res) => {
   try {
     const agent = await Agent.findById(req.params.id);
@@ -52,7 +47,6 @@ exports.getAgentById = async (req, res) => {
   }
 };
 
-// Update an agent
 exports.updateAgent = async (req, res) => {
   try {
     const { name, email, mobile } = req.body;
@@ -72,7 +66,6 @@ exports.updateAgent = async (req, res) => {
   }
 };
 
-// Delete an agent
 exports.deleteAgent = async (req, res) => {
   try {
     const agent = await Agent.findById(req.params.id);
@@ -82,6 +75,55 @@ exports.deleteAgent = async (req, res) => {
     res.json({ message: 'Agent deleted' });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.uploadAgentsFromCSV = async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
+
+    const results = [];
+
+    fs.createReadStream(req.file.path)
+      .pipe(csv())
+      .on('data', (data) => results.push(data))
+      .on('end', async () => {
+        await DistributedList.deleteMany({});
+
+        const agentTasksMap = new Map();
+
+        for (const row of results) {
+          let agent = await Agent.findOne({ email: row.email });
+
+          if (!agent) {
+            agent = await Agent.create({
+              name: row.name,
+              email: row.email,
+              mobile: row.mobile,
+            });
+          }
+
+          if (!agentTasksMap.has(agent._id.toString())) {
+            agentTasksMap.set(agent._id.toString(), { agent, tasks: [] });
+          }
+
+          agentTasksMap.get(agent._id.toString()).tasks.push({ task: row.tasks });
+        }
+
+        for (const { agent, tasks } of agentTasksMap.values()) {
+          await DistributedList.create({
+            agent: agent._id,
+            tasks,
+          });
+        }
+
+        fs.unlinkSync(req.file.path);
+
+        res.status(200).json({ message: 'CSV uploaded and data distributed' });
+      });
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ message: 'Server error' });
   }
 };

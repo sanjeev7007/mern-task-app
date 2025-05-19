@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -131,7 +132,7 @@ function Login() {
             <div className="logo-glow"></div>
           </div>
           <div className="nav-links">
-            {/*<a href="#" className="nav-link">Home</a>
+            {/*<a href="" className="nav-link">Home</a>
             <a href="#" className="nav-link active">Login</a>
             <a href="#" className="nav-link">Help</a>*/}
           </div>
@@ -260,7 +261,7 @@ function Login() {
 
             <div className="signup-option">
               <span>Don't have an account?</span>
-              <a href="/" className="signup-link">Sign up</a>
+              <Link to="/signup" className="signup-link">Sign up</Link>
             </div>
 
             <div className="corner-accents">

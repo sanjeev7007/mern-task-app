@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer'); // ← uncommented this
-const authMiddleware = require('../middleware/authMiddleware'); // ← fixed path
-const { uploadAgentsFromCSV } = require('../controllers/agentController'); // ← fixed path
+const multer = require('multer');
+const authMiddleware = require('../middleware/authMiddleware');
+const { uploadAgentsFromCSV } = require('../controllers/agentController');
 
-// Set up multer to save files to "uploads" folder
+// Set up multer
 const upload = multer({ dest: 'uploads/' });
 
-// Protected route: user must be authenticated
+// Route with auth and multer middleware, then controller function handler
 router.post('/upload', authMiddleware, upload.single('file'), uploadAgentsFromCSV);
 
 module.exports = router;

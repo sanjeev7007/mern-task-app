@@ -1,0 +1,106 @@
+/* Signup.css */
+
+.signup-container {
+  padding: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
+  background: #0d0d0d; /* dark background */
+  border-radius: 12px;
+  box-shadow:
+    0 0 10px rgba(255, 0, 0, 0.6),
+    0 0 20px rgba(255, 0, 0, 0.4),
+    inset 0 0 30px rgba(255, 0, 0, 0.8);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Neon glow effect on heading */
+.signup-container h2 {
+  text-align: center;
+  color: #ff0000;
+  text-shadow:
+    0 0 5px #ff0000,
+    0 0 10px #ff0000,
+    0 0 20px #ff0000,
+    0 0 40px #ff0000;
+  margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input styling */
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ff0000;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+  box-shadow:
+    0 0 5px rgba(255, 0, 0, 0.4);
+}
+
+.signup-container input[type="email"]:focus,
+.signup-container input[type="password"]:focus {
+  outline: none;
+  box-shadow:
+    0 0 10px #ff0000,
+    0 0 20px #ff4d4d;
+  border-color: #ff0000;
+}
+
+/* Button styling */
+.signup-container button[type="submit"] {
+  padding: 12px 15px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff0000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px #ff0000,
+    0 0 20px #ff4d4d;
+  transition: background-color 0.3s ease;
+}
+
+.signup-container button[type="submit"]:hover {
+  background-color: #e60000;
+  box-shadow:
+    0 0 15px #ff0000,
+    0 0 30px #ff6666;
+}
+
+/* Message styling */
+.signup-container p {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Success message */
+.success-message {
+  color: #4CAF50; /* green */
+  text-shadow:
+    0 0 8px #4CAF50;
+}
+
+/* Error message */
+.error-message {
+  color: #ff4d4d; /* light red */
+  text-shadow:
+    0 0 8px #ff4d4d;
+}
+

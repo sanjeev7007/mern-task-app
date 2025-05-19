@@ -6,6 +6,7 @@ import AddAgent from './components/AddAgent';
 import CSVUploader from './components/CSVUploader';
 //import Agents from './components/Agents'; 
 import AgentList from './components/AgentList';
+import SignupPage from './components/SignupPage';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/add-agent" element={<AddAgent />} />
         <Route path="/upload-csv" element={<CSVUploader />} />
         <Route path="/agents" element={<AgentList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </Router>
   );
